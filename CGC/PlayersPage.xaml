@@ -1,0 +1,33 @@
+﻿<Page x:Class="CGC.PlayersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:loc="clr-namespace:CGC"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="300"
+      Title="Gracze">
+    <Grid>
+        <Grid>
+            <Button Command="{Binding AddPlayerCommand}" Content="Nowy gracz" HorizontalAlignment="Left"
+                    Margin="5,5,0,0" VerticalAlignment="Top" />
+            <Button Command="{Binding RemoveChoosenPlayersCommand}" Content="Usuń graczy" HorizontalAlignment="Left"
+                    Margin="85,5,0,0" VerticalAlignment="Top" />
+            <ComboBox x:Name="GameTypeComboBox"  ItemsSource="{Binding GameTypes, Mode=TwoWay}" SelectedItem="{Binding SelectedGameType}" HorizontalAlignment="Left" Margin="158,5,0,0" VerticalAlignment="Top" Width="120" IsSynchronizedWithCurrentItem="False"/>
+            <Button Command="{Binding NewGameCommand}" x:Name="StartGameButton" Content="Nowa Gra" HorizontalAlignment="Left" 
+                    Margin="290,5,0,0" VerticalAlignment="Top" Width="75"/>
+        </Grid>
+        <DataGrid
+            x:Name="PlayersGrid"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Path=Players}" Margin="0,55,0,27" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header=" " Binding="{Binding IsChoosen}" />
+                <DataGridTextColumn Header="Imię" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>
